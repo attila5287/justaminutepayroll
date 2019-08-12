@@ -1,0 +1,184 @@
+
+<!doctype html>
+<html lang="en">
+<!-- required meta tags and bootstrap css -->
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	 crossorigin="anonymous">
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+     crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <title>Bootsrap Components Master</title> -->
+    <title>
+        mini_payroll | python_app        
+    </title>
+    <link rel="icon" type="image/x-icon" class="favicon" href="
+    https://raw.githubusercontent.com/attila5287/payroll_management_app_assets/master/mini_classic_image.png
+    ">
+    <!-- Bootstrap CSS -->
+
+
+<style>
+            i {
+                    font-family:  Tahoma;
+                    /* color: #331dfa; */
+                    font-weight: 400;
+                }
+                
+                div.container {
+                    margin-top: 8px; 
+                    padding: 4px;
+                    border-top-width: 6px ;
+                    border-top-style:  dotted;
+                    border-top-color:  #ddddddab;
+                }
+                
+                li {
+                    list-style: none;
+                    padding: 2px;
+                }
+            }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark p-1" style="background-color: navy">
+        <a class="navbar-brand" href="/">
+            <div class="alert m-1 p-0 " role="alert">
+                <i style="color:rgb(255, 255, 255); font-family: cursive;"> mini_payroll </i>
+                <img src="https://raw.githubusercontent.com/attila5287/payroll_management_app_assets/master/mini_classic_icon.ico" width="70" height="65">
+            </div>
+        </a>
+        <div class="navbar" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-0 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <h4>
+                        > P4YSTUB
+                        </h4> 
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <h4>
+                           >> FORMS
+                        </h4>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/attila5287/pr3-machineLearning">
+                        <h4>
+                        GITHUB / CODE
+                        </h4>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/attila5287/pr3-RegroPoly-assets-herokuAPP">
+                        <h4>GITHUB / ASSETS</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav>
+        <ul class="nav justify-content-center" style="background-color: lightgrey">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">
+                        <i class="fa fa-battery" aria-hidden="true" style="color: navy; font-size: 20px                              ;"> Full-Stack Web App | attila5287 </i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="
+                https://raw.githubusercontent.com/attila5287/payroll_management_app_assets/master/mini_classic_image.png
+                " alt="logo" width="165" height="150">
+            </div>
+            <div class="col-sm-4">
+                <h1 style="font-family: 'Courier New'; font-weight: 600">
+                    Weekly Timesheet
+                </h1>
+                <i>
+                    Week Start: 
+                </br>Week End: 
+                </br>Total Hours:
+            </i>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <strong class="card-title">Company</strong>
+                        <p class="card-text">
+                                Baklava LLC
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card" >
+                    <div class="card-body">
+                        <strong class="card-title"> Employee </strong>
+                        <p class="card-text">
+                            Abuzer Kadayif
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-2">
+
+        <div class="row">
+            {% for day in Pay_period %}
+            <div class="col-sm-2">
+                <div class="alert alert-secondary border-light text-center mb-0" role="alert">
+                </div>
+                    <strong>{{ day }}</strong>
+                <div class="input-group input-group-xs p-1">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-xs">
+                        in
+                    </span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="hours_in" aria-describedby="inputGroup-sizing-sm" placeholder = "10">
+                    <input type="text" class="form-control" aria-label="minutes_in" aria-describedby="inputGroup-sizing-sm" placeholder = "00"> 
+                    <select class="custom-select mb-0" id="inputGroupSelect01">
+                            <option selected>AM</option>
+                            <option value="1">AM</option>
+                            <option value="2">PM</option>
+                        </select>
+                </div>
+                <div class="input-group input-group-xs p-0">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-xs">
+                        out
+                    </span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="hours_in" aria-describedby="inputGroup-sizing-lg" placeholder = "09">
+                    <input type="text" class="form-control" aria-label="minutes_in" aria-describedby="inputGroup-sizing-lg" placeholder = "00">
+                    <select class="custom-select mb-1" id="inputGroupSelect01">
+                            <option selected>PM</option>
+                            <option value="1">AM</option>
+                            <option value="2">PM</option>
+                        </select>
+                    <button type="button" class="btn btn-secondary btn-sm btn-block btn-align-center">submit hours</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
