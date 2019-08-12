@@ -10,10 +10,11 @@ import json
 import jinja2
 from Pay_stub import Pay_stub
 from forms import ContactForm, Timesheet, Tim3sheet
+from flask_wtf import FlaskForm  
 # create instance of Flask app
 app = Flask(__name__)
 
-# add configuration as Heroku requirement
+# add configuration as Heroku req+uirement
 flask_debug = False
 app.config['FLASK_DEBUG'] = flask_debug
 app.config['WTF_CSRF_ENABLED'] = False
@@ -80,31 +81,6 @@ def forms():
     current = current,
     year2date =   year2date
   )
-
-@app.route('/play')
-def blackjack_table():
-  player_cards = []
-  dealer_cards = []
-  test_game = blackjack_1on1()
-  # method below returns a tuple playerCards, dealerCards
-  test_sim_roundd = test_game.simulation_mode_1on1()
-  # first list of tuple
-  player_cards = [
-    card for card in test_sim_roundd[0]
-  ]
-  # second list of tuple
-  dealer_cards = [
-    card for card in test_sim_roundd[-1]
-  ]
-  return render_template(
-    'home.html',
-    player_c4rds=player_cards,
-    dealer_c4rds=dealer_cards
-    )
-
-@app.route('/bstemp') 
-def show_me_bootstrap_templates():
-    return render_template('bstemp.html')
 
 # ============ THE END ==============
 if __name__ == '__main__':
