@@ -1,10 +1,4 @@
-from flask import (
-    Flask, 
-    render_template, 
-    redirect, 
-    jsonify, 
-    request
-    )
+from flask import (Flask, render_template, redirect, jsonify, request)
 from flask_pymongo import PyMongo
 import json
 import jinja2
@@ -14,7 +8,7 @@ from flask_wtf import FlaskForm
 # create instance of Flask app
 app = Flask(__name__)
 
-# add configuration as Heroku req+uirement
+# add configuration as Heroku requirement
 flask_debug = False
 app.config['FLASK_DEBUG'] = flask_debug
 app.config['WTF_CSRF_ENABLED'] = False
