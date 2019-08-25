@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <!-- required meta tags and bootstrap css -->
@@ -128,59 +129,17 @@
     </div>
 
     <div class="container p-2">
-        <form action = "http://localhost:5000/result" method = "POST">
             <div class="row">
                 <div class="col-sm-4">
-                        {{ form.Gender.label }} 
-                        {{ form.Gender }} <br>
-                        {{ form.address_ee.label }}
-                        {{ form.address_ee }} <br>
-                        {{ form.address_er.label }}
-                        {{ form.address_er }} <br>                        
-                        {{ form.allowance.label }}
-                        {{ form.allowance }} <br>
-                        {{ form.frequency.label }}
-                        {{ form.frequency }} <br>
-                        {{ form.submit }}
+                    <table border = 1>
+                        {% for key, value in result.items() %}
+                        <tr>
+                            <th> {{ key }} </th>
+                            <td> {{ value }} </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
-            </div>
         </form>
     </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2><a href="/send">Add your pet here!</a></h2>
-        </div>
-    </div>
-
-
-        
-    <div class="container">
-            <div class="jumbotron" style="text-align: center">
-                <h1>Pet Pal</h1>
-                <p>Enter your pet's details below!</p>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <form method="POST" action="/send" role="form", name="petform">
-                        <div class="form-group">
-                            <label for="inputName">Pet Name</label>
-                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLat">Pet Location Lat</label>
-                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Lat">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLon">Pet Location Lon</label>
-                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
-                        </div>
-                        <input type="submit" value="submit" class="btn btn-default">
-                    </form>
-                </div>
-            </div>
-
-        </div>
-
-
 </body>

@@ -2,15 +2,11 @@ from flask_wtf import FlaskForm
 from wtforms import TextField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from wtforms import validators, ValidationError
 
-
-
 class ContactForm(FlaskForm):
    name = TextField("Name Of Student", [validators.Required("Please enter your name.")])
    Gender = RadioField('Gender', choices = [('M','Male'),('F','Female')])
    Address = TextAreaField("Address")
-   
    email = TextField("Email",[validators.Required("Please enter your email address."), validators.Email("Please enter your email address.")])
-   
    Age = IntegerField("age")
    language = SelectField('Languages', choices = [('cpp', 'C++'), ('py', 'Python')])
    submit = SubmitField("Send")
@@ -31,3 +27,13 @@ class Tim3sheet(Timesheet):
    def __init__(self, label = 'no_label_set'):
       pass
       self.label = label
+
+class EmployeeForm(FlaskForm):
+   name_ee = TextField("Name Of Employee", [validators.Required("Please enter your name.")])
+   name_er = TextField("Name Of Employee", [validators.Required("Please enter your name.")])
+   address_ee = TextAreaField("Employee Address")
+   address_er = TextAreaField("Company Address")
+   Gender = RadioField('Gender', choices = [('M','Male'),('F','Female')])
+   allowance = IntegerField("allowance")
+   frequency = SelectField('Frequency', choices = [('biweekly', 'monthly'), ('bw', 'mo')])
+   submit = SubmitField("Send")
