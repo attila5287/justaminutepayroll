@@ -13,10 +13,10 @@ app.config['FLASK_DEBUG'] = flask_debug
 app.config['WTF_CSRF_ENABLED'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite"
-db = SQLAlchemy(app)
 # db.create_all()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://doffzajcqxfelhp:5b59eac5a5ea676b7229695cd65f3d44344d00ba1cf15f53143c4a0f8c91ce19@ec2-174-129-27-3.compute-1.amazonaws.com:5432/d6lf1ishviubld'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://doffzajcqxfelhp:5b59eac5a5ea676b7229695cd65f3d44344d00ba1cf15f53143c4a0f8c91ce19@ec2-174-129-27-3.compute-1.amazonaws.com:5432/d6lf1ishviubld'
 # ===================== DEFINE DATABASE MODEL ======================
+db = SQLAlchemy(app)
 class Pet(db.Model):
     __tablename__ = 'pets'
 
