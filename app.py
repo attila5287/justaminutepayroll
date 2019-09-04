@@ -1,79 +1,127 @@
-# from models import Employee
 from flask_sqlalchemy import SQLAlchemy
 import os
 from flask import (Flask, render_template, redirect, jsonify, request)
 from flask_pymongo import PyMongo
 import json
-from Pay_stub import Pay_stub
+from Pay_stub import Pay_stub, Employee_form_data, ModGeneratedPayStubFrom
 from flask_wtf import FlaskForm  
-from forms import ContactForm, Timesheet, Tim3sheet, EmployeeForm
+from forms import ContactForm, Timesheet, Tim3sheet, EmployeeForm 
 app = Flask(__name__)
 flask_debug = False
 app.config['FLASK_DEBUG'] = flask_debug
 app.config['WTF_CSRF_ENABLED'] = False
+
+# only use when uploading to heroku-config var is dynamic for postgres
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite"
-# db.create_all()
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://doffzajcqxfelhp:5b59eac5a5ea676b7229695cd65f3d44344d00ba1cf15f53143c4a0f8c91ce19@ec2-174-129-27-3.compute-1.amazonaws.com:5432/d6lf1ishviubld'
-# ===================== DEFINE DATABASE MODEL ======================
-db = SQLAlchemy(app)
-class Pet(db.Model):
-    __tablename__ = 'pets'
 
+db = SQLAlchemy(app)
+
+# ===================== DEFINE DATABASE MODEL ======================
+class Employee(db.Model):
+    __tablename__ = 'employees'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-    lat = db.Column(db.Float)
-    lon = db.Column(db.Float)
+    firstName = db.Column(db.String(64))
+    middleName = db.Column(db.String(64))
+    lastName = db.Column(db.String(64))
+    companyName = db.Column(db.String(64))
+    allowance = db.Column(db.Integer)
+    hourlyRate = db.Column(db.Float)
+    hoursWorked = db.Column(db.Float)
 
     def __repr__(self):
-        return '<Pet %r>' % (self.name)
-# ======================  ======================
-@app.route("/")
-def home():
-    return render_template("index.html")
+        return '<Employee %r %r>' % (self.firstName, self.lastName) 
 
-# ======================  ======================
+
+class Employe3():
+    def __init__(self, 
+                 firstName = 'Abuzer',
+                 middleName = 'B',
+                 lastName = 'Kadayif' ,
+                 companyName = 'Baklava LLC',
+                 hourlyRate = 14.33,
+                 hoursWorked = 80.00
+                ):
+        pass
+        self.firstName = firstName
+        self.middleName = middleName
+        self.lastName = lastName
+        self.companyName = companyName
+        self.hourlyRate = hourlyRate
+        self.hoursWorked = hoursWorked
+    def __str__(self):
+        msg = 'dummy object created'
+        return msg
+
+
 # Query the database and send the jsonified results
-@app.route("/send", methods=["GET", "POST"])
+@app.route("/")
+@app.route("/send", methods=["GET", "POST"]) 
 def send():
     if request.method == "POST":
-        name = request.form["petName"]
-        lat = request.form["petLat"]
-        lon = request.form["petLon"]
-
-        pet = Pet(name=name, lat=lat, lon=lon)
-        db.session.add(pet)
+        employee = Employee(
+            firstName = request.form["firstName"],
+            middleName = request.form["middleName"],
+            lastName=request.form["lastName"],
+            companyName = request.form["companyName"],
+            allowance = request.form["allowance"],
+            hourlyRate = request.form["hourlyRate"],
+            hoursWorked=request.form["hoursWorked"]
+            )
+        db.session.add(employee)
         db.session.commit()
-        return redirect("/", code=302)
+        user_input = Employee_form_data(
+            firstName = request.form["firstName"],
+            middleName = request.form["middleName"],
+            lastName=request.form["lastName"],
+            companyName = request.form["companyName"],
+            allowance = request.form["allowance"],
+            hourlyRate = request.form["hourlyRate"],
+            hoursWorked=request.form["hoursWorked"]
+        )
 
+      #   generated_paystub = ModGeneratedPayStubFrom(
+      #       firstName = request.form["firstName"],
+      #       middleName = request.form["middleName"],
+      #       lastName=request.form["lastName"],
+      #       companyName = request.form["companyName"],
+      #       allowance = request.form["allowance"],
+      #       hourlyRate = request.form["hourlyRate"],
+      #       hoursWorked=request.form["hoursWorked"]
+      #   )
+
+        generated_paystub = ModGeneratedPayStubFrom(
+            firstName = 'attila',
+            middleName = 'selcuk',
+            lastName = 'turkoz',
+            companyName = 'jampay',
+            allowance = 2,
+            hourlyRate = 44,
+            hoursWorked = 80
+        )
+        return render_template("pay_stub_generat0r.html", Pay_stub = generated_paystub)
     return render_template("form.html")
 
-# ======================  ======================
+# ====   ==================  ======================
 @app.route("/api/pals")
 def pals():
-    results = db.session.query(Pet.name, Pet.lat, Pet.lon).all()
+   results = db.session.query(Employee.lastName, Employee.firstName, Employee.middleName, Employee.allowance, Employee.hourlyRate, Employee.hoursWorked).all()
 
-    hover_text = [result[0] for result in results]
-    lat = [result[1] for result in results]
-    lon = [result[2] for result in results]
-
-    pet_data = [{
-        "type": "scattergeo",
-        "locationmode": "USA-states",
-        "lat": lat,
-        "lon": lon,
-        "text": hover_text,
-        "hoverinfo": "text",
-        "marker": {
-            "size": 50,
-            "line": {
-                "color": "rgb(8,8,8)",
-                "width": 1
-            },
-        }
-    }]
-
-    return jsonify(pet_data)
+   firstName = [result[0] for result in results]
+   middleName = [result[1] for result in results]
+   lastName = [result[2] for result in results]
+   allowance = [result[3] for result in results]
+   hourlyRate = [result[4] for result in results]
+   hoursWorked = [result[5] for result in results]
+   ee_data = [{
+         'firstName' : firstName,
+         'middleName' : middleName,
+         'lastName' : lastName,
+         'allowance' : allowance,
+         'hourlyRate' : hourlyRate,
+         'hoursWorked' : hoursWorked
+   }]
+   return jsonify(ee_data)
 # ============================================
 @app.route('/eeinfo', methods = ['GET', 'POST']) 
 def cont4ct():
@@ -110,7 +158,7 @@ def Tim3sheet_first_week():
 @app.route('/paystubviewer')
 def Pay_stub_generet0r():
     pass
-    test_a_paystub = Pay_stub()
+    tes2t_a_paystub = Pay_stub()
     return render_template('pay_stub_viewer.html', Pay_stub = test_a_paystub)
 
 @app.route('/contact', methods = ['POST', 'GET'])
