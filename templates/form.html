@@ -1,50 +1,141 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pet Form</title>
-
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>form | JAM Payroll</title>
+            <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>
+            form | JAM payroll
+        </title>
+        <link rel="icon" type="image/x-icon" class="favicon" href="
+        https://raw.githubusercontent.com/attila5287/payroll_management_app_assets/master/mini_classic_image.png
+        ">
+        <!-- Bootstrap CSS -->
+        <style>
+                i {
+                        font-family:  Tahoma;
+                        /* color: #331dfa; */
+                        font-weight: 400;
+                    }
+                    
+                    div.container {
+                        margin-top: 8px; 
+                        padding: 4px;
+                        border-top-width: 6px ;
+                        border-top-style:  dotted;
+                        border-top-color:  #ddddddab;
+                    }
+                    
+                    li {
+                        list-style: none;
+                        padding: 2px;
+                    }
+                }
+        </style>
+    </head>
     <body>
+        <nav class="navbar navbar-expand-sm navbar-dark p-1" style="background-color: navy">
+                <a class="navbar-brand" href="/">
+                    <div class="alert m-1 p-0 " role="alert">
+                        <i style="color:rgb(255, 255, 255); font-family: cursive;"> mini_payroll </i>
+                        <img src="https://raw.githubusercontent.com/attila5287/payroll_management_app_assets/master/mini_classic_icon.ico" width="70" height="65">
+                    </div>
+                </a>
+                <div class="navbar" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-0 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <h4>
+                                > P4YSTUB
+                                </h4> 
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">
+                                <h4>
+                                    >> FORMS
+                                </h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+        <nav>
+            <ul class="nav justify-content-center" style="background-color: lightgrey">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">
+                            <i class="fa fa-battery" aria-hidden="true" style="color: navy; font-size: 20px                              ;"> Full-Stack Web App | attila5287 </i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         <div class="container">
             <div class="jumbotron" style="text-align: center">
-                <h1>Pet Pal</h1>
-                <p>Enter your pet's details below!</p>
+                <h1>JAM Payroll</h1>
+                <p>Fill up the forms and hit submit!</p>
             </div>
             <div class="row">
-                <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-offset-4 col-md-8">
                     <form method="POST" action="/send" role="form", name="petform">
                         <div class="form-group">
-                            <label for="inputName">Pet Name</label>
-                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Name">
+                            <label for="inputFirstName">First Name</label>
+                            <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="first name">
+                        </div>                        
+                        <div class="form-group">
+                            <label for="inputMiddleName">Middle Name</label>
+                            <input type="text" class="form-control" id="inputMiddleName" name="middleName" placeholder="middle name">
+                        </div>                  
+                        <div class="form-group">
+                            <label for="inputLastName">Last Name</label>
+                            <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="last name">
+                        </div>                        
+                        <div class="form-group">
+                            <label for="inputCompanyName">Company Name</label>
+                            <input type="text" class="form-control" id="inputCompanyName" name="companyName" placeholder="company name">
+                        </div>                                          
+                        <div class="form-group">
+                            <label for="inputAllowance">Allowance Total</label>
+                            <input type="text" class="form-control" id="inputAllowance" name="allowance" placeholder="check H on w-4">
+                        </div>                        
+                        <div class="form-group">
+                            <label for="inputHourlyRate">Hourly Rate</label>
+                            <input type="text" class="form-control" id="inputHourlyRate" name="hourlyRate" placeholder="dollars per hour">
                         </div>
                         <div class="form-group">
-                            <label for="inputLat">Pet Location Lat</label>
-                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Lat">
+                            <label for="inputHoursWorked">Hours Worked</label>
+                            <input type="text" class="form-control" id="inputHoursWorked" name="hoursWorked" placeholder="number of hours">
                         </div>
                         <div class="form-group">
-                            <label for="inputLon">Pet Location Lon</label>
-                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
-                        </div>
-                        <input type="submit" value="submit" class="btn btn-default">
+                            <label for="inputPayCountYearToDate">Pay Count YTD</label>
+                            <input type="text" class="form-control" id="inputPayCountYr2Dt" name="payCntYr2Dt" placeholder="pay count year to date">
+                        </div>                        
+                        <div class="form-group">
+                            <label for="inputDateStart">Pay Period Start</label>
+                            <input type="text" class="form-control" id="inputDateStart" name="dateStart" placeholder="first monday of bi-weekly">
+                        </div>                                          
+                        <div class="form-group">
+                                <label for="inputDateEnd">Pay Period End</label>
+                                <input type="text" class="form-control" id="inputDateEnd" name="dateEnd" placeholder="second sunday of bi-weekly">
+                            </div>                                          
+                        <input type="submit" value="J|A|M" class="btn btn-default">
                     </form>
+
                 </div>
             </div>
 
