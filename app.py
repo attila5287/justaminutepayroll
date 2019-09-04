@@ -80,25 +80,28 @@ def send():
             hoursWorked=request.form["hoursWorked"]
         )
 
-      #   generated_paystub = ModGeneratedPayStubFrom(
-      #       firstName = request.form["firstName"],
-      #       middleName = request.form["middleName"],
-      #       lastName=request.form["lastName"],
-      #       companyName = request.form["companyName"],
-      #       allowance = request.form["allowance"],
-      #       hourlyRate = request.form["hourlyRate"],
-      #       hoursWorked=request.form["hoursWorked"]
-      #   )
-
         generated_paystub = ModGeneratedPayStubFrom(
-            firstName = 'attila',
-            middleName = 'selcuk',
-            lastName = 'turkoz',
-            companyName = 'jampay',
-            allowance = 2,
-            hourlyRate = 44,
-            hoursWorked = 80
+            firstName = request.form["firstName"],
+            middleName = request.form["middleName"],
+            lastName=request.form["lastName"],
+            companyName = request.form["companyName"],
+            allowance = int(request.form["allowance"]),
+            hourlyRate = float(request.form["hourlyRate"]),
+            hoursWorked=int(request.form["hoursWorked"]),
+            payCntYr2Dt= int(request.form["payCntYr2Dt"]),
+            dateStart=request.form["dateStart"],
+            dateEnd=request.form["dateEnd"]
         )
+
+      #   generated_paystub = ModGeneratedPayStubFrom(
+      #       firstName = 'attila',
+      #       middleName = 'selcuk',
+      #       lastName = 'turkoz',
+      #       companyName = 'jampay',
+      #       allowance = 2,
+      #       hourlyRate = 44,
+      #       hoursWorked = 80
+      #   )
         return render_template("pay_stub_generat0r.html", Pay_stub = generated_paystub)
     return render_template("form.html")
 
@@ -175,3 +178,4 @@ def contact():
 # ============ THE END ==============
 if __name__ == '__main__':
   app.run(debug=True)
+

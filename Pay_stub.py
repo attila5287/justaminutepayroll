@@ -30,14 +30,15 @@ class Employee_form_data():
         msg = 'never gonna keep me down'
         return msg
 
-
 class ModGeneratedPayStubFrom(Employee_form_data):
-    def __init__(self, payCntYr2Dt = 2, *args, **kwargs):
+    def __init__(self, payCntYr2Dt = 2, dateStart = '8/25/2019', dateEnd = '8/12/2019',*args, **kwargs):
         super(ModGeneratedPayStubFrom, self).__init__(*args, **kwargs)
         self.payCntYr2Dt = payCntYr2Dt
+        self.dateStart = dateStart
+        self.dateEnd = dateEnd
         self.allowance_regression_slope = -0.1067
         self.allowance_regression_intcpt = 2.0444 
-        self.allowanceFactor = (self.allowance_regression_slope * self.allowance) +  self.allowance_regression_intcpt
+        self.allowanceFactor = float(self.allowance_regression_slope * self.allowance) +  self.allowance_regression_intcpt
         self.current = self.hoursWorked * self.hourlyRate
         self.year2date = payCntYr2Dt * self.current
         self.hourlyR4te = currency_f0rmatter(self.hourlyRate)
@@ -87,4 +88,6 @@ class Pay_stub(Employee_form_data):
     def __str__(self):
         msg = 'I get knocked down but I get up again'
         return msg
-                
+
+if __name__ == "__main__":
+    pass
