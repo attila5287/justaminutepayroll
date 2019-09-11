@@ -68,8 +68,8 @@ def send():
             hourlyRate = request.form["hourlyRate"],
             hoursWorked=request.form["hoursWorked"]
             )
-        db.session.add(employee)
-        db.session.commit()
+#         db.session.add(employee)
+#         db.session.commit()
         user_input = Employee_form_data(
             firstName = request.form["firstName"],
             middleName = request.form["middleName"],
