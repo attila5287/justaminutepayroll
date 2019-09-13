@@ -92,16 +92,19 @@ def send():
             dateStart=request.form["dateStart"],
             dateEnd=request.form["dateEnd"]
         )
+                dict = {
+        'Social Security' : float(generated_paystub.social_security_perc), 
+        'Medicare' : float(generated_paystub.medicare_perc), 
+        'FUTA' : float(generated_paystub.futa_perc), 
+        'State Unemployment Tax' : float(generated_paystub.co_unemp_perc), 
+        'Taxes' : float(generated_paystub.taxes_perc), 
+        'Net Pay': float(generated_paystub.net_pay_perc)
+        }
+    
+        return render_template("pay_stub_generat0r.html", Pay_stub=generated_paystub, dict = dict)
+        
 
-      #   generated_paystub = ModGeneratedPayStubFrom(
-      #       firstName = 'attila',
-      #       middleName = 'selcuk',
-      #       lastName = 'turkoz',
-      #       companyName = 'jampay',
-      #       allowance = 2,
-      #       hourlyRate = 44,
-      #       hoursWorked = 80
-      #   )
+
         return render_template("pay_stub_generat0r.html", Pay_stub = generated_paystub)
     return render_template("form.html")
 
