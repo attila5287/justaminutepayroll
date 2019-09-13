@@ -92,7 +92,7 @@ def send():
             dateStart=request.form["dateStart"],
             dateEnd=request.form["dateEnd"]
         )
-                dict = {
+        dict = {
         'Social Security' : float(generated_paystub.social_security_perc), 
         'Medicare' : float(generated_paystub.medicare_perc), 
         'FUTA' : float(generated_paystub.futa_perc), 
