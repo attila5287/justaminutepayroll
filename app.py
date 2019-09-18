@@ -95,8 +95,6 @@ def send():
         dict = {
         'Social Security' : float(generated_paystub.social_security_perc), 
         'Medicare' : float(generated_paystub.medicare_perc), 
-        'FUTA' : float(generated_paystub.futa_perc), 
-        'State Unemployment Tax' : float(generated_paystub.co_unemp_perc), 
         'Taxes' : float(generated_paystub.taxes_perc), 
         'Net Pay': float(generated_paystub.net_pay_perc)
         }
