@@ -56,6 +56,13 @@ class Employe3():
 
 # Query the database and send the jsonified results
 @app.route("/")
+
+
+
+@app.route('/home')
+def ind3x():
+    return render_template('home.html')    
+
 @app.route("/send", methods=["GET", "POST"]) 
 def send():
     if request.method == "POST":
