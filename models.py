@@ -1,26 +1,15 @@
 from app import db
 
-
-class Pet(db.Model):
-    __tablename__ = 'pets'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-    lat = db.Column(db.Float)
-    lon = db.Column(db.Float)
-
-    def __repr__(self):
-        return '<Pet %r>' % (self.name)
-
-
-# 
 class Employee(db.Model):
-    __tablename__ = 'employee'
+    __tablename__ = 'Employee'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-    lat = db.Column(db.Float)
-    lon = db.Column(db.Float)
-
+    firstName = db.Column(db.String(64))
+    middleName = db.Column(db.String(64))
+    lastName = db.Column(db.String(64))
+    allowance = db.Column(db.Integer)
+    hourlyRate = db.Column(db.Float)
+    hoursWorked = db.Column(db.Float)
+    
     def __repr__(self):
-        return '<Employee %r>' % (self.name)
+        return '<Employee %r %r>' % (self.firstName, self.lastName) 
