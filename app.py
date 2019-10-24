@@ -16,7 +16,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite"
 
 db = SQLAlchemy(app)
-
+@app.before_first_request
+def setup():
+    # Recreate database each time for demo
+    db.drop_all()
 # ===================== DEFINE DATABASE MODEL ======================
 class Employee(db.Model):
     __tablename__ = 'employees'
@@ -75,8 +78,8 @@ def send():
             hourlyRate = request.form["hourlyRate"],
             hoursWorked=request.form["hoursWorked"]
             )
-#         db.session.add(employee)
-#         db.session.commit()
+        db.session.add(employee)
+        db.session.commit()
         user_input = Employee_form_data(
             firstName = request.form["firstName"],
             middleName = request.form["middleName"],
