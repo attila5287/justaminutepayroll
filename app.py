@@ -20,6 +20,7 @@ db = SQLAlchemy(app)
 def setup():
     # Recreate database each time for demo
     db.drop_all()
+    db.create_all() 
 # ===================== DEFINE DATABASE MODEL ======================
 class Employee(db.Model):
     __tablename__ = 'employees'
